@@ -1,4 +1,13 @@
-<h2>Ceci est un article</h2>
-<p>Texte de l'article</p>
+<div>
+<h2>{{article.title}}</h2>
+<p>auteur de l'article : {{article.author}}</p>
+<p *ngIf="article.isPublished">{{ article.content }}</p>
+<img [src]="article.image"/>
+</div>
+<button (click)="togglePublication()">Publier / Dépublier l'article</button>
+
+<h3> Commentaires</h3>
+<p>{{article.comment}}</p>
+<input [(ngModel)]="article.comment" type="text">
 
 
