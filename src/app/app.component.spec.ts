@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have the 'wild-blog' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('wild-blog');
+    expect(app.title).toEqual('Bienvenue sur le wild blog de léo');
   });
 
   it('should render title', () => {
