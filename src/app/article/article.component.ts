@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 
 
-interface Article{
+type Article = {
   title : string,
   author: string,
   content : string,
