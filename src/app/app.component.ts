@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ArticleComponent } from "./article/article.component";
+import { ExerciceDirectivesComponent } from './exercice-directives/exercice-directives.component';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,4 @@
+<h3 [ngStyle]="{backgroundColor:isAdmin? 'red':'grey'}">Bonjour : exercice 4 "directives" </h3>
+
+<button (click)="toggleAdmin()">View</button><hr>
+<button *ngIf="isAdmin">Edit</button>

@@ -1,6 +1,7 @@
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
+import { ExerciceDirectivesComponent } from "../exercice-directives/exercice-directives.component";
 
 
 type Article = {
@@ -15,7 +16,7 @@ type Article = {
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [NgIf,FormsModule],
+  imports: [NgIf, FormsModule, NgStyle, ExerciceDirectivesComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
