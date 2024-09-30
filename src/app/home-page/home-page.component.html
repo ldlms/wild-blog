@@ -5,13 +5,10 @@
     {
     @for(article of articles;track $index){
     
-    @if(article.isPublished){<div>
+    @if(article.isPublished){
+    <div (click)="goToArticle(article)">
         <h2 [ngClass]="{'popular':article.likes > 100}" [ngStyle]="{'color':article.likes>150?'red':'green'}">{{article.title}}</h2>
-        <p>{{article.author}}</p>
-        <p>{{article.content}}</p>
         <img src="{{article.image}}">
-        <p>{{article.comment}}</p>
-        <p>Likes : {{article.likes}}</p>
     </div>
     }
     }

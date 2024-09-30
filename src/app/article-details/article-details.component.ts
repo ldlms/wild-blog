@@ -1,28 +1,18 @@
+import { Component, inject, Inject, Input } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import {Article} from '../home-page/home-page.component'
 import { NgClass, NgStyle } from '@angular/common';
-import { Component, inject, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-
-export type Article = {
-  id:number,
-  title:string,
-  author:string,
-  content:string,
-  image:string,
-  isPublished:boolean,
-  comment:string,
-  likes:number
-}
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-article-details',
   standalone: true,
   imports: [NgClass,NgStyle],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss'
+  templateUrl: './article-details.component.html',
+  styleUrl: './article-details.component.scss'
 })
-export class HomePageComponent {
-
-  router:Router = inject(Router);
+export class ArticleDetailsComponent {
+  route: ActivatedRoute = inject(ActivatedRoute);
+  articleId!: number;
 
   articles:Article[] = [
     {
@@ -56,12 +46,19 @@ export class HomePageComponent {
       likes: 200,
     }
   ];
+  article!: Article;
+  test:number = 0;
 
-  areNonePublished():boolean{
-    return this.articles.filter(article => article.isPublished).length === 0;
-  }
+  ngOnInit(){
+    this.route.paramMap.subscribe((params:ParamMap) =>{
+      this.test =  Number(params.get('id'));
+      this.article = this.articles.find(article => article.id === this.test) as Article;
+      console.log(this.article);
 
-  goToArticle(article:Article){
-    this.router.navigate(['/article',article.id]);
-  }
+    }
+    
+    )
+}
+
+
 }
