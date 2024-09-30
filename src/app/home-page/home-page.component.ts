@@ -63,5 +63,6 @@ export class HomePageComponent {
 
   goToArticle(article:Article){
     this.router.navigate(['/article',article.id]);
+    console.log(this.router);
   }
 }

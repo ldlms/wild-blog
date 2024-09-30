@@ -1,22 +1,23 @@
 import { Component, inject, Inject, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import {Article} from '../home-page/home-page.component'
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Article } from '../home-page/home-page.component'
 import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-article-details',
   standalone: true,
-  imports: [NgClass,NgStyle],
+  imports: [NgClass, NgStyle],
   templateUrl: './article-details.component.html',
   styleUrl: './article-details.component.scss'
 })
 export class ArticleDetailsComponent {
+  router:Router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
 
-  articles:Article[] = [
+  articles: Article[] = [
     {
-      id:1,
+      id: 1,
       title: 'Angular 16: Les nouveautés',
       author: 'Alice',
       content: 'Les nouveautés d\'Angular 16 incluent...',
@@ -26,7 +27,7 @@ export class ArticleDetailsComponent {
       likes: 120,
     },
     {
-      id:2,
+      id: 2,
       title: 'Développer une API REST',
       author: 'Bob',
       content: 'Développer une API REST nécessite...',
@@ -36,7 +37,7 @@ export class ArticleDetailsComponent {
       likes: 75,
     },
     {
-      id:3,
+      id: 3,
       title: 'Pourquoi TypeScript est essentiel ?',
       author: 'Charlie',
       content: 'TypeScript apporte de la robustesse...',
@@ -48,15 +49,20 @@ export class ArticleDetailsComponent {
   ];
   article!: Article;
 
-  ngOnInit(){
-    this.route.paramMap.subscribe((params:ParamMap) =>{
-      this.article = this.articles.find(article => article.id === Number(params.get('id')))as Article;
-      console.log(this.article);
+  ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      if (Number(params.get('id')) <= this.articles.length) {
+        this.article = this.articles.find(article => article.id === Number(params.get('id'))) as Article;
+        console.log(typeof params.get('id'));
+        console.log(this.route);
+      }else{
+        this.router.navigate(['**'])
+      }
 
     }
-    
+
     )
-}
+  }
 
 
 }
