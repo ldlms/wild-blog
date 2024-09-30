@@ -1,69 +1,88 @@
-<form class="row g-3"  #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card text-center custom-card-bg col-md-4 text-black">
+        <form class="row gy-2 gx-3 align-items-center justify-content-center" #contactForm="ngForm"
+            (ngSubmit)="contactForm.valid && onSubmit()">
 
-<fieldset>
-<label for="lastname" >Lastname</label>
-<input id="lastname" name="lastname" type="text" [(ngModel)]="message.lastname" #lastname = "ngModel" required minlength="2" required maxlength="15">
-@if(lastname.errors && contactForm.submitted){
-    <div>
-        @if(lastname.errors['required']){
-            <span>le nom est requis</span>
-        }@else if (lastname.errors['minlength']) {
-            <span>Vous avez un nom trop court</span>
-        }@else if (lastname.errors['maxlength']) {
-            <span>Votre nom est trop long</span>
-        }
+            <fieldset>
+                <div class="col-md-8 mx-auto mb-2 mt-3">
+                    <input class="form-control" id="lastname" placeholder="lastname" name="lastname" type="text" [(ngModel)]="message.lastname"
+                        #lastname="ngModel" required minlength="2" required maxlength="15">
+                    @if(lastname.errors && contactForm.submitted){
+                    <div>
+                        @if(lastname.errors['required']){
+                        <span class="text-danger">le nom est requis</span>
+                        }@else if (lastname.errors['minlength']) {
+                        <span class="text-danger">Vous avez un nom trop court</span>
+                        }@else if (lastname.errors['maxlength']) {
+                        <span class="text-danger">Votre nom est trop long</span>
+                        }
+                    </div>
+                    }
+                </div>
+            </fieldset>
+            <hr>
+
+            <fieldset>
+                <div class="col-md-8 mx-auto mb-2">
+                    <input class="form-control" id="firstname" name="firstname" placeholder="firstname" type="text"
+                        [(ngModel)]="message.firstname" #firstname="ngModel" required minlength="2" required
+                        maxlength="15">
+                    @if(firstname.errors && contactForm.submitted){
+                    <div>
+                        @if(firstname.errors['required']){
+                        <span class="text-danger">le prénom est requis</span>
+                        }@else if (firstname.errors['minlength']) {
+                        <span class="text-danger">trop court</span>
+                        }@else if (firstname.errors['maxlength']) {
+                        <span class="text-danger">votre prenom est trop long</span>
+                        }
+                    </div>
+                    }
+                </div>
+            </fieldset>
+            <hr>
+
+
+            <fieldset>
+                <div class="col-md-8 mx-auto mb-2">
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" [(ngModel)]="message.email"
+                        #email="ngModel" required email>
+                    @if(email.errors && contactForm.submitted){
+                    <div>
+                        @if(email.errors['required']){
+                        <span class="text-danger">l'email est requis</span>
+                        }@else if (email.errors['email']) {
+                        <span class="text-danger">l'email est invalide</span>
+                        }
+                    </div>
+                    }
+                </div>
+            </fieldset>
+            <hr>
+
+            <fieldset>
+                <div class="col-md-8 mx-auto mb-2">
+                    <textarea class="form-control" for="content" placeholder="Type your content here....." name="content" type="text"
+                        [(ngModel)]="message.content" #content=ngModel required minlength="10" rows="4"
+                        cols="50"></textarea>
+                    @if(content.errors && contactForm.submitted){
+                    <div>
+                        @if(content.errors['required']){
+                        <span class="text-danger">le contenu est requis</span>
+                        }@else if (content.errors['minlength']) {
+                        <span class="text-danger">contenu insuffisant</span>
+                        }
+                    </div>
+                    }
+                </div>
+            </fieldset>
+            <hr>
+
+            <div class="col-md-12 d-flex justify-content-around">
+                <button class="btn btn-primary mx-2 mb-3" type="submit">Submit</button>
+                <button class="btn btn-secondary mx-2 mb-3" type="reset">Restore</button>
+            </div>
+
+        </form>
     </div>
-}
-</fieldset>
-
-
-<fieldset>
-    <label for="firstname">Firstname</label>
-    <input id="firstname" name="firstname" type="text" [(ngModel)]="message.firstname" #firstname = "ngModel" required minlength="2" required maxlength="15" >
-    @if(firstname.errors && contactForm.submitted){
-        <div>
-            @if(firstname.errors['required']){
-                <span>le prénom est requis</span>
-            }@else if (firstname.errors['minlength']) {
-                <span>trop court</span>
-            }@else if (firstname.errors['maxlength']) {
-                <span>votre prenom est trop long</span>
-            }
-        </div>
-    }
-</fieldset>
-
-
-<fieldset>
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" [(ngModel)]="message.email" #email = "ngModel" required email>
-    @if(email.errors && contactForm.submitted){
-        <div>
-            @if(email.errors['required']){
-                <span>l'email est requis</span>
-            }@else if (email.errors['email']) {
-                <span>l'email est invalide</span>
-            }
-        </div>
-    }
-</fieldset>
-
-<fieldset>
-    <label for="content">Content</label>
-    <textarea for="content" name="content" type="text" [(ngModel)]="message.content" #content = ngModel required minlength="10" rows="4" cols="50"></textarea>
-    @if(content.errors && contactForm.submitted){
-        <div>
-            @if(content.errors['required']){
-                <span>le contenu est requis</span>
-            }@else if (content.errors['minlength']) {
-                <span>contenu insuffisant</span>
-            }
-        </div>
-    }
-</fieldset>
-
-<button type="submit">Submit</button>
-<button type="reset">Restore</button>
-
-
-</form>
+</div>
