@@ -47,12 +47,10 @@ export class ArticleDetailsComponent {
     }
   ];
   article!: Article;
-  test:number = 0;
 
   ngOnInit(){
     this.route.paramMap.subscribe((params:ParamMap) =>{
-      this.test =  Number(params.get('id'));
-      this.article = this.articles.find(article => article.id === this.test) as Article;
+      this.article = this.articles.find(article => article.id === Number(params.get('id')))as Article;
       console.log(this.article);
 
     }
