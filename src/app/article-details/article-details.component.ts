@@ -1,4 +1,4 @@
-import { Component, inject, Inject, Input } from '@angular/core';
+import { Component, inject, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Article } from '../home-page/home-page.component'
 import { NgClass, NgStyle } from '@angular/common';
@@ -10,7 +10,7 @@ import { NgClass, NgStyle } from '@angular/common';
   templateUrl: './article-details.component.html',
   styleUrl: './article-details.component.scss'
 })
-export class ArticleDetailsComponent {
+export class ArticleDetailsComponent implements OnInit {
   router:Router = inject(Router);
   route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
@@ -49,7 +49,7 @@ export class ArticleDetailsComponent {
   ];
   article!: Article;
 
-  ngOnInit() {
+  ngOnInit():void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       if (Number(params.get('id')) <= this.articles.length) {
         this.article = this.articles.find(article => article.id === Number(params.get('id'))) as Article;

@@ -1,0 +1,76 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card text-center custom-card-bg col-md-4 text-black">
+
+        <form [formGroup]="signUpForm" class="row gy-2 gx-3 align-items-center justify-content-center"
+            (ngSubmit)="onSubmit()">
+
+            <div>
+                <label for="username">Nom d'utilisateur :</label>
+                <input id="username" formControlName="username">
+                @if(signUpForm.get("username")?.invalid && signUpForm.get("username")?.touched){
+                    <div>
+                        @if(signUpForm.get('username')?.errors?.['required']){
+                            <span>Le nom d'utilisateur est requis</span>
+                        }@else if (signUpForm.get('username')?.errors?.['minLength']) {
+                            <span>Nom d'utilisateur trop court</span>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div>
+                <label for="email">Email :</label>
+                <input id="email" formControlName="email">
+                @if(signUpForm.get("email")?.invalid && signUpForm.get("email")?.touched){
+                    <div>
+                        @if(signUpForm.get("email")?.errors?.["required"]){
+                            <span>L'email est requis</span>
+                        }@else if (signUpForm.get("email")?.errors?.["email"]) {
+                            <span>Format incorrect</span>
+                        }
+                    </div>
+                }
+
+                <!-- ici la logique de gestion d'erreurs -->
+            </div>
+
+            <div formGroupName="passwords">
+                <div>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" formControlName="password">
+                    @if(signUpForm.get("passwords.password")?.invalid && signUpForm.get("passwords.password")?.touched){
+                        <div>
+                            @if(signUpForm.get("passwords.password")?.errors?.["required"]){
+                                <span>Le mot de passe est requis</span>
+                            }@else if (signUpForm.get("passwords.password")?.errors?.["securePassword"]) {
+                                <span>le mot de passe ne correspond pas aux critères</span>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div>
+                    <label for="confirmPassword">Confirmez votre mot de passe</label>
+                    <input type="password" id="confirmPassword" formControlName="confirmPassword">
+                        @if(signUpForm.get("passwords.confirmPassword")?.invalid && signUpForm.get("passwords.confirmPassword")?.touched){
+                            <div>
+                                @if(signUpForm.get("passwords.confirmPassword")?.errors?.["required"]){
+                                    <span>confimation requise</span>
+                                }@else if (signUpForm.get('passwords')?.errors?.['passwordMatchValidator']) {
+                                    <span>Les mots de passe ne correspondent pas</span>
+                                }
+                            </div>
+                            
+                        }
+                </div>
+
+            </div>
+
+            <button type="submit" [disabled]="signUpForm.invalid" >s'incrire</button>
+
+        </form>
+
+
+    </div>
+
+</div>
