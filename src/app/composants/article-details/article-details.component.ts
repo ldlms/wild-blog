@@ -22,18 +22,14 @@ export class ArticleDetailsComponent implements OnInit {
   constructor(private articleService:ArticlesService){}
 
   ngOnInit(): void {
+    this.articles = this.articleService.getArticles();
     this.route.paramMap.subscribe((params: ParamMap) => {
       if (Number(params.get('id')) <= this.articles.length) {
         this.article = this.articles.find(article => article.id === Number(params.get('id'))) as Article;
-        console.log(typeof params.get('id'));
-        console.log(this.route);
       } else {
         this.router.navigate(['**'])
       }
     })
-
-    this.articles = this.articleService.articles
-
   }
 
 

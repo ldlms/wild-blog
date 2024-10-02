@@ -1,8 +1,9 @@
 import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { ExerciceDirectivesComponent } from "../exercice-directives/exercice-directives.component";
 import {Article} from '../../Models/article';
+import { Router } from '@angular/router';
 
 
 
@@ -20,5 +21,16 @@ import {Article} from '../../Models/article';
 export class ArticleComponent {
 
   @Input() article:Article = {} as Article;
+  @Output() eventLike = new EventEmitter<number>()
+  router:Router = inject(Router);
+
+  likeArticle(id:number){
+    this.eventLike.emit(id);
+  }
+
+  goToArticle(id:number):void{
+    console.log(id);
+    this.router.navigate(['/article',id]);
+  }
 
 }

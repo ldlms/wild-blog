@@ -1,11 +1,10 @@
 <div class="articles-container">
         <h2 [ngClass]="{'popular':article.likes > 100}" [ngStyle]="{'color':article.likes>150?'red':'green'}">
             {{article.title}}</h2>
-        <p>{{article.author}}</p>
-        <p>{{article.content}}</p>
         <img src="{{article.image}}">
-        <p>{{article.comment}}</p>
         <p>Likes : {{article.likes}}</p>
+        <button (click)="likeArticle(article.id)" >Liker !</button>
+        <button (click)="goToArticle(article.id)" >Lien vers l'article</button>
 </div>
 
 

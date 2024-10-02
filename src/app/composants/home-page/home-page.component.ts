@@ -14,22 +14,19 @@ import { ArticlesService } from '../../shared/articles.service';
 })
 export class HomePageComponent implements OnInit {
 
-  router:Router = inject(Router);
   articles:Article[] = [];
 
   constructor(private articleService:ArticlesService){}
   
   ngOnInit(): void {
-    this.articles = this.articleService.articles 
+    this.articles = this.articleService.getArticles(); 
   }
-  
+
+  incrementLikes(id:number):void{
+    this.articleService.incrementLikes(id);
+  }
 
   areNonePublished():boolean{
     return this.articles.filter(article => article.isPublished).length === 0;
-  }
-
-  goToArticle(article:Article){
-    this.router.navigate(['/article',article.id]);
-    console.log(this.router);
   }
 }

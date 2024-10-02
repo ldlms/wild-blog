@@ -8,7 +8,7 @@ export class ArticlesService {
 
   constructor() { }
 
-  articles:Array<Article> = [
+  private articles:Array<Article> = [
     new Article(
       1,
       'Angular 16: Les nouveautés',
@@ -40,4 +40,12 @@ export class ArticlesService {
       200,
     )
   ];
+
+  public getArticles():Array<Article>{
+    return this.articles;
+  }
+
+  public incrementLikes(id:number):void{
+    (this.articles.find(article => article.id === id) as Article).likes++;
+  }
 }
