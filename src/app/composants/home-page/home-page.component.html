@@ -1,5 +1,5 @@
 <div class="blog-container">
-@for(article of articles;track article.id){
-<app-article [article]="article" (eventLike)="incrementLikes($event)"></app-article>
-}
+    @for(article of articles;track article.id){
+    <app-article [article]="article" (eventLike)="incrementLikes($event)"></app-article>
+    }
 </div>

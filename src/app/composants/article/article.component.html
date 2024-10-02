@@ -1,10 +1,8 @@
 <div class="articles-container">
-        <h2 [ngClass]="{'popular':article.likes > 100}" [ngStyle]="{'color':article.likes>150?'red':'green'}">
-            {{article.title}}</h2>
-        <img src="{{article.image}}">
-        <p>Likes : {{article.likes}}</p>
-        <button (click)="likeArticle(article.id)" >Liker !</button>
-        <button (click)="goToArticle(article.id)" >Lien vers l'article</button>
+    <h2 [ngClass]="{'popular':article.likes > 100}" [ngStyle]="{'color':article.likes>150?'red':'green'}">
+        {{article.title}}</h2>
+    <img src="{{article.image}}">
+    <p>Likes : {{article.likes}}</p>
+    <button (click)="likeArticle(article.id)">Liker !</button>
+    <button (click)="goToArticle(article.id)">Lien vers l'article</button>
 </div>
-
-

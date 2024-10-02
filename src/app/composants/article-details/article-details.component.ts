@@ -19,7 +19,7 @@ export class ArticleDetailsComponent implements OnInit {
   articles: Article[] = [];
   article!: Article;
 
-  constructor(private articleService:ArticlesService){}
+  constructor(private articleService: ArticlesService) { }
 
   ngOnInit(): void {
     this.articles = this.articleService.getArticles();
