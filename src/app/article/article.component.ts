@@ -1,22 +1,16 @@
-import { NgIf, NgStyle } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { ExerciceDirectivesComponent } from "../exercice-directives/exercice-directives.component";
+import {Article} from '../Models/article';
 
 
-type Article = {
-  title : string,
-  author: string,
-  content : string,
-  image : string
-  isPublished :boolean,
-  comment: string
-}
+
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [NgIf, FormsModule, NgStyle, ExerciceDirectivesComponent],
+  imports: [NgIf, FormsModule, NgClass, NgStyle, ExerciceDirectivesComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
@@ -25,17 +19,6 @@ type Article = {
 
 export class ArticleComponent {
 
-  article : Article = {
-    title : `titre de l'article`,
-    author: `john doe`,
-    content:`le contenu de l'article`,
-    image:`https://via.placeholder.com/350x150`,
-    isPublished: false,
-    comment:''
-  }
+  @Input() article:Article = {} as Article;
 
-  togglePublication():void{
-    this.article.isPublished = !this.article.isPublished;
-    console.log(this.article.isPublished);
-  }
 }

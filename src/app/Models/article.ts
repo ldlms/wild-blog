@@ -1,15 +1,15 @@
 export class Article {
 
-    id:number;
-    title:string;
-    author:string;
-    content:string;
-    image:string;
-    isPublished:boolean;
-    comment:string;
-    likes:number;
+    id: number;
+    title: string;
+    author: string;
+    content: string;
+    image: string;
+    isPublished: boolean;
+    comment: string;
+    likes: number;
 
-    constructor(id:number,title:string,author:string,content:string,image:string,isPublished:boolean,comment:string,likes:number){
+    constructor(id: number, title: string, author: string, content: string, image: string, isPublished: boolean, comment: string, likes: number) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -19,5 +19,9 @@ export class Article {
         this.comment = comment;
         this.likes = likes;
 
+    }
+
+    togglePublication(): void {
+        this.isPublished = !this.isPublished;
     }
 }
