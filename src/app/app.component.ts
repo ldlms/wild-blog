@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ArticleComponent } from "./article/article.component";
+import { ArticleComponent } from './composants/article/article.component';
 import { NgClass, NgStyle } from '@angular/common';
 
 
