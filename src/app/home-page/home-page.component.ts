@@ -1,22 +1,13 @@
 import { NgClass, NgStyle } from '@angular/common';
 import { Component, inject, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-
-export type Article = {
-  id:number,
-  title:string,
-  author:string,
-  content:string,
-  image:string,
-  isPublished:boolean,
-  comment:string,
-  likes:number
-}
+import {Article} from '../Models/article';
+import { ArticleComponent } from "../article/article.component";
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [NgClass,NgStyle],
+  imports: [NgClass, NgStyle, ArticleComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -24,7 +15,7 @@ export class HomePageComponent {
 
   router:Router = inject(Router);
 
-  articles:Article[] = [
+  articles:Array<Article> = [
     {
       id:1,
       title: 'Angular 16: Les nouveautés',

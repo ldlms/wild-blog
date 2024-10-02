@@ -1,6 +1,6 @@
 import { NgIf, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { ExerciceDirectivesComponent } from "../exercice-directives/exercice-directives.component";
 
 
