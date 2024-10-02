@@ -14,17 +14,26 @@ export class SignUpFormsComponent {
 
   signUpForm = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, this.validateEmail()]],
     passwords: this.formBuilder.group({
       password: ['', [Validators.required, this.securePassword()]],
       confirmPassword: ['',[Validators.required]],
     }, {validators: this.passwordMatchValidator()})
   });
 
+  ///validateur email
+  validateEmail():ValidatorFn{
+    return (control:AbstractControl):ValidationErrors | null => {
+      let regex = '^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$'
+      const value = control.value || '';
+      const verifiedEmail = value.toUpperCase().match(regex);
+      return verifiedEmail ? null : {validEmail:true};
+    } 
+  }
+
   /// a placer séparément 
   securePassword():ValidatorFn {
     return (control:AbstractControl):ValidationErrors | null => {
-      console.log("secure");
       const value = control.value || '';
 
       const hasUpperCase = /[A-Z]/.test(value);
