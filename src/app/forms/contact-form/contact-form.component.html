@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card text-center custom-card-bg col-md-4 text-black">
-        <form class="row gy-2 gx-3 align-items-center justify-content-center" #contactForm="ngForm"
+        <form class="row gy-2 gx-3 align-items-center justify-content-center" #contactForm="ngForm" 
             (ngSubmit)="contactForm.valid && onSubmit()">
 
             <fieldset>
@@ -44,12 +44,12 @@
             <fieldset>
                 <div class="col-md-8 mx-auto mb-2">
                     <input class="form-control" id="email" name="email" placeholder="Email" type="email" [(ngModel)]="message.email"
-                        #email="ngModel" required email>
+                        #email="ngModel" EmailVerificator required >
                     @if(email.errors && contactForm.submitted){
                     <div>
                         @if(email.errors['required']){
                         <span class="text-danger">l'email est requis</span>
-                        }@else if (email.errors['email']) {
+                        }@else if (email.errors['validEmail']) {
                         <span class="text-danger">l'email est invalide</span>
                         }
                     </div>

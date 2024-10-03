@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EmailVerificatorDirective } from '../../shared/email-verificator.directive';
 
 export interface Message  {
   lastname:string,
@@ -11,7 +12,7 @@ export interface Message  {
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,EmailVerificatorDirective],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss'
 })
