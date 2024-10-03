@@ -1,9 +1,9 @@
 import { NgClass, NgStyle } from '@angular/common';
 import { Component, inject, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Article } from '../../Models/article';
+import { Article } from '../../Models/Article/article';
 import { ArticleComponent } from "../article/article.component";
-import { ArticlesService } from '../../shared/articles.service';
+import { ArticlesService } from '../../shared/classServices/articles.service';
 
 @Component({
   selector: 'app-home-page',

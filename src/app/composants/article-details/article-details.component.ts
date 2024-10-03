@@ -1,8 +1,8 @@
 import { Component, inject, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Article } from '../../Models/article'
+import { Article } from '../../Models/Article/article'
 import { NgClass, NgStyle } from '@angular/common';
-import { ArticlesService } from '../../shared/articles.service';
+import { ArticlesService } from '../../shared/classServices/articles.service';
 
 @Component({
   selector: 'app-article-details',

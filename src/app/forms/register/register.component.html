@@ -1,0 +1,118 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Informations utilisateur</h2>
+    <div>
+        <label for="username">Nom d'utilisateur</label>
+        <input id="username" type="text" formControlName="username">
+        @if(registerForm.get('username')?.invalid && registerForm.get('username')?.touched){
+        <div>
+            @if(registerForm.get('username')?.errors?.['required']){
+            <span>Le nom d'utilisateur est requis</span>
+            }@else if (registerForm.get('username')?.errors?.['minLength']) {
+            <span>le nom d'utilisateur doit faire plus de 3 caractères</span>
+            }
+        </div>
+        }
+    </div>
+
+    <div>
+        <label for="email">Email utilisateur</label>
+        <input id="email" type="email" formControlName="email">
+        @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+        <div>
+            @if(registerForm.get('email')?.errors?.['required']){
+            <span>L'email est requis</span>
+            }@else if (registerForm.get('email')?.errors?.['validEmail']) {
+            <span>Le format d'email n'est pas valide</span>
+            }
+        </div>
+        }
+    </div>
+
+    <div formGroupName="passwords">
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input id="password" type="password" formControlName="password">
+            @if(registerForm.get('passwords.password')?.invalid && registerForm.get('passwords.password')?.touched){
+            <div>
+                @if(registerForm.get('passwords.password')?.errors?.['required']){
+                <span>Un mot de passe est requis</span>
+                }@else if (registerForm.get("passwords.password")?.errors?.['securePassword']) {
+                <span>Le mot de passe doit faire 12 caractères, avoir une majuscule, des chiffres et un caractère
+                    special</span>
+                }
+            </div>
+            }
+        </div>
+
+        <div>
+            <label for="confirmPassword">confirmez votre mot de passe :</label>
+            <input id="confirmPassword" type="password" formControlName="confirmPassword">
+            @if(registerForm.get("passwords.confirmPassword")?.invalid &&
+            registerForm.get("passwords.confirmPassword")?.touched){
+            <div>
+                @if(registerForm.get('passwords.confirmPassword')?.errors?.['required']){
+                <span>La confimation est requise</span>
+                }@else if (registerForm.get("passwords")?.errors?.['passwordMatchValidator'] && registerForm.get("passwords.confirmPassword")?.touched) {
+                <span>Le mot de passe et la confirmation doivent correspondre</span>
+                }
+            </div>
+            }
+        </div>
+    </div>
+
+    <div formGroupName="address">
+        <h2>Adresse :</h2>
+        <div>
+            <label for="street">Rue :</label>
+            <input id="street" type="text" formControlName="street">
+            @if(registerForm.get('address.street')?.invalid && registerForm.get('address.street')?.touched){
+            <div>
+                @if(registerForm.get('address.street')?.errors?.['required']){
+                <span>le nom de rue est requis</span>
+                }
+            </div>
+            }
+        </div>
+
+        <div>
+            <label for="number">Numéro d'adresse :</label>
+            <input id="number" type="number" formControlName="number">
+            @if(registerForm.get('address.number')?.invalid && registerForm.get('address.number')?.touched){
+            <div>
+                @if(registerForm.get('address.number')?.errors?.['required']){
+                <span>le numero de rue est requis</span>
+                }
+            </div>
+            }
+        </div>
+
+        <div>
+            <label for="city">ville :</label>
+            <input id="city" type="text" formControlName="city">
+            @if(registerForm.get('address.city')?.invalid && registerForm.get('address.city')?.touched){
+            <div>
+                @if(registerForm.get('address.city')?.errors?.['required']){
+                <span>la nom de la ville est requise</span>
+                }
+            </div>
+            }
+        </div>
+
+        <div>
+            <label for="postalCode">Code Postal :</label>
+            <input id="postalCode" type="number" formControlName="postalCode">
+            @if(registerForm.get('address.postalCode')?.invalid && registerForm.get('address.postalCode')?.touched){
+            <div>
+                @if(registerForm.get('address.postalCode')?.errors?.['required']){
+                <span>le code postal est requis</span>
+                }
+            </div>
+            }
+        </div>
+
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<app-user-list></app-user-list>

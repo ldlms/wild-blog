@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder,Validators, ReactiveFormsModule, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
+
 @Component({
   selector: 'app-sign-up-forms',
   standalone: true,
@@ -49,7 +50,6 @@ export class SignUpFormsComponent {
   }
 
   passwordMatchValidator():ValidatorFn{
-    console.log("match");
     return(formGroup:AbstractControl): ValidationErrors | null =>{
       const password = formGroup.get("password")?.value;
       const verifiedPassword = formGroup.get("confirmPassword")?.value;

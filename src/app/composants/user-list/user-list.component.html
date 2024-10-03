@@ -1,0 +1,14 @@
+<h2>Liste des utilisateurs</h2>
+
+@for(user of users; track $index){
+    <div>
+        <div>
+            <h3>{{user.username}}</h3>
+            <p>{{user.email}}</p>
+            <p>Adresse :</p>
+            <p>L'utilisateur habite au {{user.address.number}}, {{user.address.street}}, Dans la ville de : {{user.address.city}}, {{user.address.postalCode}}</p>
+        </div>
+    </div>
+}
+
+

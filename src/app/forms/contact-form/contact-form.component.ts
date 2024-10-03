@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { EmailVerificatorDirective } from '../../shared/email-verificator.directive';
+import { EmailVerificatorDirective } from '../../shared/verificators/email-verificator.directive';
 
 export interface Message  {
   lastname:string,
